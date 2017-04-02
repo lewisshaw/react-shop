@@ -16,14 +16,12 @@ var Products = React.createClass({
       this.setLoading(true)
       ProductsData.getProducts(function(error, products){
         this.setLoading(false);
-        var newState = this.state;
         if (error) {
-            newState.error = 'An error occurred - could not fetch products. Please retry';
-            this.setState(newState);
+            this.setError('An error occurred - could not fetch products. Please retry');
             return;
         }
-        newState.products = products;
-        this.setState(newState);
+        this.setError('');
+        this.setProducts(products);
       }.bind(this));
     },
     render: function() {
@@ -49,6 +47,16 @@ var Products = React.createClass({
     setLoading: function(loading) {
         var newState = this.state;
         newState.loading = loading;
+        this.setState(newState);
+    },
+    setError: function(error) {
+        var newState = this.state;
+        newState.error = error;
+        this.setState(newState);
+    },
+    setProducts: function(products) {
+        var newState = this.state;
+        newState.products = products;
         this.setState(newState);
     }
 });
