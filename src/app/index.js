@@ -10,6 +10,7 @@ import Navigation from './navigation';
 import Home from './home';
 import NotFound from './not-found';
 import ProductPage from './product-page';
+import Cart from './cart';
 
 var App = React.createClass({
     render: function() {
@@ -21,6 +22,7 @@ var App = React.createClass({
                         <Switch>
                             <Route exact path="/" component={Home} />
                             <Route path="/product/:id" component={ProductPage} />
+                            <Route path="/cart" component={Cart} />
                             <Route component={NotFound} />
                         </Switch>
                     </div>

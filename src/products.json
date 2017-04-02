@@ -3,12 +3,12 @@
         "id": 1,
         "title": "Computer",
         "description": "The best computer in the world. Everyone should have",
-        "price": 29999
+        "price": 299.99
     },
     {
         "id": 2,
         "title": "Laptop",
         "description": "The best laptop in the world. Everyone should have",
-        "price": 39999
+        "price": 399.99
     }
 ]
