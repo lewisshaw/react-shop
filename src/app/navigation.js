@@ -1,5 +1,5 @@
 var React = require('react');
-import {NavLink} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 
 var Navigation = React.createClass({
   render: function() {
@@ -13,7 +13,7 @@ var Navigation = React.createClass({
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="#">Project name</a>
+            <Link className="navbar-brand" to="/">My Shop</Link>
           </div>
           <div id="navbar" className="collapse navbar-collapse">
             <ul className="nav navbar-nav">
