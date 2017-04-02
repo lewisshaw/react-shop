@@ -20,6 +20,10 @@ var Navigation = React.createClass({
               <li><NavLink to="/">Home</NavLink></li>
               <li><NavLink to="/about">About</NavLink></li>
             </ul>
+            <ul className="nav navbar-nav navbar-right">
+
+              <li><Link to="/cart">Shopping Cart</Link></li>
+            </ul>
           </div>
         </div>
       </nav>
