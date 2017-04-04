@@ -45,10 +45,15 @@ var Cart = React.createClass({
     },
     removeProduct: function(productToRemove) {
         var newState = this.state;
-        newState.cart.products = newState.cart.products.filter(function(product) {
-            return product !== productToRemove;
-        });
-        this.setState(newState);
+        CartData.removeProduct(productToRemove.productId, function(error) {
+            if (error) {
+                return;
+            }
+            newState.cart.products = newState.cart.products.filter(function(product) {
+                return product !== productToRemove;
+            });
+            this.setState(newState);
+        }.bind(this))
     },
     changeQuantity: function(productToUpdate, quantity) {
         var newState = this.state;

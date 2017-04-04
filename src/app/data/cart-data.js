@@ -43,6 +43,16 @@ var CartData = {
             }
             callback(error, null);
         });
+    },
+    removeProduct: function(productId, callback) {
+        var cartId = this.getCartId();
+        var item = {
+            productId: productId,
+            quantity: 0
+        };
+        request.post('http://localhost:8080/cart/' + cartId + '/products', {json: item}, function(error, response, body) {
+            callback(error)
+        });
     }
 };
 
