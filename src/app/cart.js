@@ -2,30 +2,27 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import CartProduct from './cart-product';
+import CartData from './data/cart-data';
 
 var Cart = React.createClass({
     getInitialState: function() {
         return {
             "cart": {
-                "products": [
-                  {
-                    "id": 1,
-                    "title": "Computer",
-                    "price": 299.00,
-                    "quantity": 1
-                  },
-                  {
-                    "id": 2,
-                    "title": "Laptop",
-                    "price": 399.00,
-                    "quantity": 2
-                  }
-                ],
-                "total": 11.99
-            }
+                "products": []
+            },
+            "loading": true
         };
     },
     componentDidMount: function() {
+        CartData.getCart(function (error, cart) {
+            if (error) {
+                console.log(error);
+                return;
+            }
+            var newState = this.state;
+            newState.cart = cart;
+            this.setState(newState);
+        }.bind(this));
     },
     render: function() {
         var products = this.state.cart.products;

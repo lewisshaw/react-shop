@@ -31,6 +31,18 @@ var CartData = {
     },
     getCartId: function() {
         return localStorage.getItem('cartId');
+    },
+    getCart: function(callback) {
+        var cartId = this.getCartId();
+        request('http://localhost:8080/cart/' + cartId, function(error, response, body) {
+            if (body) {
+                body = JSON.parse(body);
+                var cart = body.cart;
+                callback(error, cart);
+                return;
+            }
+            callback(error, null);
+        });
     }
 };
 
