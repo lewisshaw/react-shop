@@ -2,6 +2,7 @@ import React from 'react';
 
 import Product from './product';
 import ProductsData from './data/products-data.js';
+import CartData from './data/cart-data.js';
 
 var ProductPage = React.createClass({
   getInitialState: function(){
@@ -26,7 +27,7 @@ var ProductPage = React.createClass({
     );
     if (this.state.product) {
         product = (
-            <Product product = {this.state.product} />
+            <Product product = {this.state.product} addToBasket={this.addToBasket} />
         );
     } else if (this.state.error) {
         product = (
@@ -49,7 +50,14 @@ var ProductPage = React.createClass({
     var newState = this.state;
     newState.error = error;
     this.setState(newState);
+  },
+  addToBasket: function(productId) {
+    CartData.addItem({
+        productId: productId,
+        quantity: 1
+    })
   }
+
 });
 
 module.exports = ProductPage;
