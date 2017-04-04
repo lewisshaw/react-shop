@@ -3,6 +3,7 @@ import request from 'request';
 import Product from './product';
 
 import ProductsData from './data/products-data';
+import CartData from './data/cart-data.js';
 
 var Products = React.createClass({
     getInitialState: function() {
@@ -28,9 +29,9 @@ var Products = React.createClass({
         var products = this.state.products;
         products = products.map(function(product, key) {
             return(
-                <Product product={product} key={key} />
+                <Product product={product} key={key} addToBasket={this.addToBasket}/>
             );
-        });
+        }.bind(this));
         var loading = '';
         if (this.state.loading) {
             loading = 'loading...';
@@ -58,6 +59,12 @@ var Products = React.createClass({
         var newState = this.state;
         newState.products = products;
         this.setState(newState);
+    },
+    addToBasket: function(productId) {
+        CartData.addItem({
+            productId: productId,
+            quantity: 1
+        })
     }
 });
 
